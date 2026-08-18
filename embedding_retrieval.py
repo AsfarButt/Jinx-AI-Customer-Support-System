@@ -14,7 +14,7 @@ conn = psycopg2.connect(DB_URL)
 
 cursor = conn.cursor()
 
-def get_embedding_context(query, k=3, threshold=0.35):
+def get_embedding_context(query, k=3, threshold=0.35):  #threshold value was deeply studied before setting up 0.38+ hillucinates alot and 0.31- becomes extra strict hence 0.35
 
     embedding = model.encode(query).tolist()
     response = get_embeddings(embedding, k, threshold)
